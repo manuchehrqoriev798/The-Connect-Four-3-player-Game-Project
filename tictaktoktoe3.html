@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="tictaktoktoe3.css">
+  <title>Three players</title>
+</head>
+<body>
+<h1>Connect Four</h1>
+<div class="container">
+  <div class="game-board">                                        <!-- Big div that contains everything -->
+    <div class="cell row-top col-0"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-1"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-2"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-3"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-4"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-5"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-6"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-7"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <div class="cell row-top col-8"></div>                        <!-- This row is not visible on the table. It would work as source of putting the balls into the table -->
+    <!-- <div class="cell row-top col-9"></div>                        This row is not visible on the table. It would work as source of putting the balls into the table -->
+  
+    <div class="cell row-0 col-0"></div>
+    <div class="cell row-0 col-1"></div>
+    <div class="cell row-0 col-2"></div>
+    <div class="cell row-0 col-3"></div>
+    <div class="cell row-0 col-4"></div>
+    <div class="cell row-0 col-5"></div>
+    <div class="cell row-0 col-6 "></div>
+    <div class="cell row-0 col-7"></div>
+    <div class="cell row-0 col-8"></div>
+    <!-- <div class="cell row-0 col-9 "></div> -->
+  
+    <div class="cell row-1 col-0"></div>
+    <div class="cell row-1 col-1"></div>
+    <div class="cell row-1 col-2"></div>
+    <div class="cell row-1 col-3"></div>
+    <div class="cell row-1 col-4"></div>
+    <div class="cell row-1 col-5"></div>
+    <div class="cell row-1 col-6 "></div>
+    <div class="cell row-1 col-7"></div>
+    <div class="cell row-1 col-8"></div>
+    <!-- <div class="cell row-1 col-9 "></div> -->
+  
+    <div class="cell row-2 col-0"></div>
+    <div class="cell row-2 col-1"></div>
+    <div class="cell row-2 col-2"></div>
+    <div class="cell row-2 col-3"></div>
+    <div class="cell row-2 col-4"></div>
+    <div class="cell row-2 col-5"></div>
+    <div class="cell row-2 col-6 "></div>
+    <div class="cell row-2 col-7"></div>
+    <div class="cell row-2 col-8"></div>
+    <!-- <div class="cell row-2 col-9 "></div> -->
+  
+    <div class="cell row-3 col-0"></div>
+    <div class="cell row-3 col-1"></div>
+    <div class="cell row-3 col-2"></div>
+    <div class="cell row-3 col-3"></div>
+    <div class="cell row-3 col-4"></div>
+    <div class="cell row-3 col-5"></div>
+    <div class="cell row-3 col-6 "></div>
+    <div class="cell row-3 col-7"></div>
+    <div class="cell row-3 col-8"></div>
+    <!-- <div class="cell row-3 col-9 "></div> -->
+  
+    <div class="cell row-4 col-0"></div>
+    <div class="cell row-4 col-1"></div>
+    <div class="cell row-4 col-2"></div>
+    <div class="cell row-4 col-3"></div>
+    <div class="cell row-4 col-4"></div>
+    <div class="cell row-4 col-5"></div>
+    <div class="cell row-4 col-6 "></div>
+    <div class="cell row-4 col-7"></div>
+    <div class="cell row-4 col-8"></div>
+    <!-- <div class="cell row-4 col-9 "></div> -->
+  
+    <div class="cell row-5 col-0 "></div>
+    <div class="cell row-5 col-1 "></div>
+    <div class="cell row-5 col-2 "></div>
+    <div class="cell row-5 col-3 "></div>
+    <div class="cell row-5 col-4 "></div>
+    <div class="cell row-5 col-5 "></div>
+    <div class="cell row-5 col-6 "></div>
+    <div class="cell row-5 col-7 "></div>
+    <div class="cell row-5 col-8 "></div>
+    <!-- <div class="cell row-5 col-9 "></div> -->
+  
+    <div class="cell row-6 col-0 "></div>
+    <div class="cell row-6 col-1 "></div>
+    <div class="cell row-6 col-2 "></div>
+    <div class="cell row-6 col-3 "></div>
+    <div class="cell row-6 col-4 "></div>
+    <div class="cell row-6 col-5 "></div>
+    <div class="cell row-6 col-6 "></div>
+    <div class="cell row-6 col-7 "></div>
+    <div class="cell row-6 col-8 "></div>
+    <!-- <div class="cell row-6 col-9 "></div> -->
+  
+    <div class="cell row-7 col-0 "></div>
+    <div class="cell row-7 col-1 "></div>
+    <div class="cell row-7 col-2 "></div>
+    <div class="cell row-7 col-3 "></div>
+    <div class="cell row-7 col-4 "></div>
+    <div class="cell row-7 col-5 "></div>
+    <div class="cell row-7 col-6 "></div>
+    <div class="cell row-7 col-7 "></div>
+    <div class="cell row-7 col-8 "></div>
+    <!-- <div class="cell row-7 col-9 "></div> -->
+  
+    <div class="cell row-8 col-0 "></div>
+    <div class="cell row-8 col-1 "></div>
+    <div class="cell row-8 col-2 "></div>
+    <div class="cell row-8 col-3 "></div>
+    <div class="cell row-8 col-4 "></div>
+    <div class="cell row-8 col-5 "></div>
+    <div class="cell row-8 col-6 "></div>
+    <div class="cell row-8 col-7 "></div>
+    <div class="cell row-8 col-8 "></div>
+    <!-- <div class="cell row-8 col-9 "></div> -->
+  
+    <!-- <div class="cell row-9 col-0 "></div>
+    <div class="cell row-9 col-1 "></div>
+    <div class="cell row-9 col-2 "></div>
+    <div class="cell row-9 col-3 "></div>
+    <div class="cell row-9 col-4 "></div>
+    <div class="cell row-9 col-5 "></div>
+    <div class="cell row-9 col-6 "></div>
+    <div class="cell row-9 col-7 "></div>
+    <div class="cell row-9 col-8 "></div>  -->
+  </div>
+  <div class="footer">
+    <button class="reset">Reset</button>
+    <span class="status"></span>
+  </div>
+</div>
+<script src="tictaktoktoe3.js"></script>
+</body>
+</html>
