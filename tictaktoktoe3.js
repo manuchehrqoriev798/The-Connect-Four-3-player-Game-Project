@@ -1,3 +1,5 @@
+// bug: logic does not work while there is three in vertical. Figurit out why
+// todo: Put timer that when it finishes you lose the game
 // DOM Elements
 const allCells = document.querySelectorAll('.cell:not(.row-top)');               // would be selected all cells but not cells that are on row-top (invisible ones)
 const topCells = document.querySelectorAll('.cell.row-top');                     // row-top cells
@@ -105,15 +107,15 @@ const checkWinningCells = (cells) => {
     statusSpan.style.borderRadius = '10px'
     statusSpan.style.transition = '0.5s'
     statusSpan.style.outline = '2px solid black'
-    if (yellowIsNext){
+    if (yellowIsNext){                                                    // bug: does not properly shows who wins
       statusSpan.textContent = `Yellow has won!`
       statusSpan.style.color = 'yellow'
       statusSpan.style.border = '5px solid yellow'
-    } else if (redIsNext) {
+    } else if (redIsNext) {                                               // bug: does not properly shows who wins
       statusSpan.textContent = `Red has won!`
       statusSpan.style.color = 'red'
       statusSpan.style.border = '5px solid red'
-    } else{
+    } else if(greenIsNext){                                              // bug: does not properly shows who wins
       statusSpan.textContent = `Green has won!`
       statusSpan.style.color = 'green'
       statusSpan.style.border = '5px solid green'
@@ -168,7 +170,7 @@ const checkWinningCells = (cells) => {
       }
     }
     rowToCheck = rowIndex + 1;                                                      // +1 means from the button to the top. It cannot be more than 5
-    while (rowToCheck <= 9 ) {
+    while (rowToCheck <= 10 ) {
       const cellToCheck = rows[rowToCheck][colToCheck];
       if (getColorOfCell(cellToCheck) === color) {
         winningCells.push(cellToCheck);
@@ -186,7 +188,7 @@ const checkWinningCells = (cells) => {
     winningCells = [cell];
     rowToCheck = rowIndex + 1;                                        // rowIndex +1 and colIndex -1 means from the top right to the button left. col bigger than 0 and row less than 5               
     colToCheck = colIndex - 1;
-    while (colToCheck >= 0 && rowToCheck <= 9) {
+    while (colToCheck >= 0 && rowToCheck <= 10) {
       const cellToCheck = rows[rowToCheck][colToCheck];
       if (getColorOfCell(cellToCheck) === color) {
         winningCells.push(cellToCheck);
@@ -230,7 +232,7 @@ const checkWinningCells = (cells) => {
     }
     rowToCheck = rowIndex + 1;                               // opposite of each other.           row +1 and col +1. From the top left to the button right.      
     colToCheck = colIndex + 1;                               // opposite of each other
-    while (colToCheck <= 9 && rowToCheck <= 9 ) {            // opposite of each other                      
+    while (colToCheck <= 9 && rowToCheck <= 10 ) {            // opposite of each other                      
       const cellToCheck = rows[rowToCheck][colToCheck];
       if (getColorOfCell(cellToCheck) === color) {
         winningCells.push(cellToCheck);
@@ -277,23 +279,23 @@ const colors = ['yellow', 'red', 'green'];
 let counter = 0;
 
 // EVENT HANDLERS
-function handleCellMouseOver(e) {
+const handleCellMouseOver = (e) => {                                // bug: while click color stays the same in the clicked cell. it should change motherfuck
   const cell = e.target;
   const [rowIndex, colIndex] = getCellLocation(cell);
   const topCell = topCells[colIndex];
-  const color = colors[counter % colors.length];
-  topCell.classList.add(color);
-  counter++;
+  const colorAdd = colors[counter % colors.length];
+  if (!topCell.classList.contains(colorAdd)) {
+    topCell.classList.add(colorAdd);
+  }
+}
+
+const handleCellMouseOut = (e) => {                                // bug: while click color stays the same in the clicked cell. it should change motherfuck
+  const cell = e.target
+  const [rowIndex, colIndex] = getCellLocation(cell)
+  clearColorFromTop(colIndex)  
 }
 
 
-    // let colors = ['yellow', 'red', 'green']
-    // let colorIndex = 0
-const handleCellMouseOut = (e) => {
-    const cell = e.target
-    const [rowIndex, colIndex] = getCellLocation(cell)
-    clearColorFromTop(colIndex)                                                         // function that while removing the mouse it deletes already existed class of yellow or red
-}
 
 const handleCellClick = (e) => {
   if (!gameIsLive) return
@@ -303,8 +305,8 @@ const handleCellClick = (e) => {
 
   if (!openCell) return
 
-  const color = colors[counter % colors.length];
-  openCell.classList.add(color);
+  const colorAdd = colors[counter % colors.length];
+  openCell.classList.add(colorAdd);
   counter++;
 
   checkStatusOfGame(openCell)
@@ -312,7 +314,7 @@ const handleCellClick = (e) => {
   clearColorFromTop(colIndex)
   if (gameIsLive){
     const topCell = topCells[colIndex]
-    topCell.classList.add(color);
+    topCell.classList.add(colorAdd);
   }
 }
 
