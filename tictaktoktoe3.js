@@ -267,7 +267,7 @@ const checkWinningCells = (cells) => {
     statusSpan.textContent =  'Good game from triple sides, the game is tie ! '
     statusSpan.style.color = 'yellow'
     statusSpan.style.border = '5px solid red'
-    statusSpan.style.backgroundColor = 'black' 
+    statusSpan.style.backgroundColor = 'green' 
     statusSpan.style.padding = '10px 30px'
     statusSpan.style.borderRadius = '10px'
     statusSpan.style.transition = '0.5s'
@@ -345,7 +345,7 @@ resetButton.addEventListener('click', () => {
     }
     gameIsLive = true
     yellowIsNext = true
-    statusSpan.textContent = ''      // bug: here it should show nothing
+    statusSpan.textContent = ``      // bug: here it should show nothing
 })
 
 
