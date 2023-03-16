@@ -5,6 +5,8 @@ const allCells = document.querySelectorAll('.cell:not(.row-top)');              
 const topCells = document.querySelectorAll('.cell.row-top');                     // row-top cells
 const resetButton = document.querySelector('.reset');                            // button
 const statusSpan = document.querySelector('.status');                             // status
+const popupReset = document.querySelector('.popup-reset')
+
 
 // columns
 const column0 = [allCells[72], allCells[63], allCells[54], allCells[45], allCells[36], allCells[27], allCells[18], allCells[9], allCells[0], topCells[0]];      // array that contains elements of the columns. The reason of starting the numbers of columns from the biggest to the smallest is that columns fill from bottom to the top. Therefore the highest number would have the smaller index.
@@ -47,6 +49,11 @@ let redIsNext = true                                                            
 
 
 // FUNCTION
+function handleGameEnd() {
+  if (!gameIsLive) {
+    document.querySelector('.game-over').style.display = 'block'
+  }
+}
 const getClassListArray = (cell) => {                                                  // declaring function that affects to class name of cells
     const classList = cell.classList
     return [...classList]                                                        // classList was an object to better work we should transform it into an array. Spread element (...) spreads each elements of our array
@@ -107,27 +114,25 @@ const checkWinningCells = (cells) => {
       cell.classList.add('win');                                                 // adds class win so that it would be         
     }
     statusSpan.style.backgroundColor = 'black' 
-    statusSpan.style.padding = '10px 30px'
+    statusSpan.style.padding = '10px'
     statusSpan.style.borderRadius = '10px'
     statusSpan.style.transition = '0.5s'
     if (yellowIsNext){                                                          // if yellowIsNext is correct means that yellow won. Line 304                                                
       statusSpan.textContent = `Yellow has won !`
       statusSpan.style.color = 'yellow'
-      statusSpan.style.border = '5px solid yellow'
-      statusSpan.style.outline = '2px solid black'
+      statusSpan.style.border = '2px solid yellow'
     } else if (redIsNext) {
       statusSpan.textContent = `Red has won !`
       statusSpan.style.color = 'red'
-      statusSpan.style.border = '5px solid red'
-      statusSpan.style.outline = '2px solid black'
+      statusSpan.style.border = '2px solid red'
     } else {
       statusSpan.textContent = `Green has won !`
       statusSpan.style.color = 'green'
       statusSpan.style.backgroundColor = 'white' 
-      statusSpan.style.border = '5px solid green'
-      statusSpan.style.outline = '2px solid black'
+      statusSpan.style.border = '2px solid green'
     }
-    return true;
+    setTimeout(handleGameEnd, 500);
+    
 
   };
 
@@ -266,9 +271,9 @@ const checkWinningCells = (cells) => {
     gameIsLive = false
     statusSpan.textContent =  'Good game from triple sides, the game is tie ! '
     statusSpan.style.color = 'yellow'
-    statusSpan.style.border = '5px solid red'
+    statusSpan.style.border = '2px solid red'
     statusSpan.style.backgroundColor = 'green' 
-    statusSpan.style.padding = '10px 30px'
+    statusSpan.style.padding = '10px'
     statusSpan.style.borderRadius = '10px'
     statusSpan.style.transition = '0.5s'
   };
@@ -320,6 +325,28 @@ const handleCellClick = (e) => {
   }
 }
 
+const handlePopupReset = () =>{                                       
+  for (const row of rows){
+    for (const cell of row){
+        cell.classList.remove('yellow')
+        cell.classList.remove('red')
+        cell.classList.remove('green')
+        cell.classList.remove('win')
+    }
+}
+  gameIsLive = true
+  yellowIsNext = true
+  document.querySelector('.game-over').style.display = 'none'
+  statusSpan.textContent = ''
+}
+
+
+
+
+
+
+
+
 
 
 // ADDING EVENT LISTENERS
@@ -347,6 +374,7 @@ resetButton.addEventListener('click', () => {
     yellowIsNext = true
     statusSpan.textContent = ``      // bug: here it should show nothing
 })
+popupReset.addEventListener('click', handlePopupReset)                  
 
 
 
