@@ -128,7 +128,6 @@ const checkWinningCells = (cells) => {
     } else {
       statusSpan.textContent = `Green has won !`
       statusSpan.style.color = 'green'
-      statusSpan.style.backgroundColor = 'white' 
       statusSpan.style.border = '2px solid green'
     }
     setTimeout(handleGameEnd, 500);

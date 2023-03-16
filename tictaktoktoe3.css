@@ -86,9 +86,9 @@
     align-items: center;
     background: #000000;
     display: flex;
-    height: 40px;
     justify-content: center;
-    width: 40px;
+    height: 50px;
+    width: 50px;
   }
   
   .cell::after {                                            /* Adds circles on the top row. Just adds*/
@@ -97,8 +97,8 @@
     border: 3px solid black;
     content: '';
     cursor: pointer;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
   }
   
   .cell:not(.row-top).red::after {                        /* shows rather circle that is on the top should be red or yellow */
@@ -210,3 +210,29 @@
 
 
 
+  @media only screen and (max-width: 550px){
+    .cell {
+      height: 45px;
+      width: 45px;
+    }
+    
+    .cell::after {                                            
+      height: 35px;
+      width: 35px;
+    }
+} 
+
+
+
+@media only screen and (max-width: 415px){
+
+  .cell {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .cell::after {
+    height: 30px;
+    width: 30px;
+  }
+} 
