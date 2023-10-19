@@ -3,6 +3,7 @@
 ## Unique 3-Player Connect Four
 
 Unique 3-Player Connect Four is a thrilling variation of the classic Connect Four game, designed for three players. In this version, players aim to connect four pieces in a row, whether horizontally, vertically, or diagonally. The project is developed using JavaScript for game logic and HTML/CSS for design. It includes convenient features like a reset button and player turn indicators.
+![tictaktoktoe](https://github.com/manuchehrqoriev798/The-Connect-Four-3-player-Game-Project/assets/112572372/61e8accd-a447-4320-a2a0-d74ab0afdc4d)
 
 ## Table of Contents
 1. [Game Logic](#game-logic)
